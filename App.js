@@ -1,8 +1,10 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import Home from "./components/Home";
+// import Home from "./components/Home";
 import { NativeBaseProvider, Box } from "native-base";
+// import ShopList from "./components/ShopList";
+import ShopDetail from "./components/ShopDetail";
 
 // export default function App() {
 //   return (
@@ -30,6 +32,7 @@ import {
   HStack,
   Stack,
 } from "native-base";
+// import ShopDetail from "./components/ShopDetail";
 export const Example = () => {
   return (
     <Box
@@ -120,8 +123,10 @@ export default () => {
   return (
     <NativeBaseProvider>
       <Center flex={1} px="3">
-        <Example />
-        <Home />
+        {/* <Example /> */}
+        {/* <Home /> */}
+        {/* <ShopList /> */}
+        <ShopDetail />
       </Center>
     </NativeBaseProvider>
   );

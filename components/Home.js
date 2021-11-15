@@ -2,9 +2,14 @@ import React from "react";
 // import { Button, Center } from "native-base";
 import { Button } from "native-base";
 
-export const Example = () => {
+export const Home = () => {
   return (
-    <Button size="lg" variant="outline" colorScheme="secondary">
+    <Button
+      size="lg"
+      variant="outline"
+      colorScheme="secondary"
+      onPress={() => alert("WOOW AMAZING MAGIC")}
+    >
       Deema's Test
     </Button>
   );
@@ -21,7 +26,7 @@ export default () => {
   return (
     //     // <NativeBaseProvider>
     //     <Center flex={1} px="3">
-    <Example />
+    <Home />
     //     </Center>
     //     // {/* </NativeBaseProvider> */}
   );
