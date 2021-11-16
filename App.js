@@ -1,10 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-// import Home from "./components/Home";
+import Home from "./components/Home";
 import { NativeBaseProvider, Box } from "native-base";
 // import ShopList from "./components/ShopList";
 import ShopDetail from "./components/ShopDetail";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import Navigation from "./components/Navigation";
 
 // export default function App() {
 //   return (
@@ -121,13 +124,14 @@ export const Example = () => {
 
 export default () => {
   return (
-    <NativeBaseProvider>
-      <Center flex={1} px="3">
-        {/* <Example /> */}
-        {/* <Home /> */}
-        {/* <ShopList /> */}
-        <ShopDetail />
-      </Center>
-    </NativeBaseProvider>
+    <NavigationContainer>
+      <NativeBaseProvider>
+        <Center>
+          <View>
+            <Navigation />
+          </View>
+        </Center>
+      </NativeBaseProvider>
+    </NavigationContainer>
   );
 };

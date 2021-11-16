@@ -1,33 +1,22 @@
 import React from "react";
-// import { Button, Center } from "native-base";
-import { Button } from "native-base";
+import { Button, Text } from "native-base";
+import { View } from "react-native";
 
-export const Home = () => {
+const Home = ({ navigation }) => {
   return (
-    <Button
-      size="lg"
-      variant="outline"
-      colorScheme="secondary"
-      onPress={() => alert("WOOW AMAZING MAGIC")}
-    >
-      Deema's Test
-    </Button>
+    <View>
+      <Text> Home Page </Text>
+
+      <Button
+        size="lg"
+        variant="outline"
+        colorScheme="secondary"
+        onPress={() => navigation.navigate("ShopList")}
+      >
+        Shop List
+      </Button>
+    </View>
   );
 };
 
-// export const Example = () => {
-//   return (
-//     <>
-//       <Button onPress={() => console.log("hello world")}>Deema Check</Button>
-//     </>
-//   );
-// };
-export default () => {
-  return (
-    //     // <NativeBaseProvider>
-    //     <Center flex={1} px="3">
-    <Home />
-    //     </Center>
-    //     // {/* </NativeBaseProvider> */}
-  );
-};
+export default Home;

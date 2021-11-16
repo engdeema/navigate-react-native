@@ -4,9 +4,9 @@ import ShopItem from "./ShopItem";
 import shopStore from "../Store/shopStore";
 import { View, Text } from "react-native";
 
-function ShopList() {
+function ShopList({ navigation }) {
   const newShop = shopStore.shops.map((shop) => (
-    <ShopItem shop={shop} key={shop._id} />
+    <ShopItem shop={shop} navigation={navigation} key={shop._id} />
   ));
   return (
     <View>
