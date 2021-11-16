@@ -5,11 +5,11 @@ import { View } from "react-native";
 const Home = ({ navigation }) => {
   return (
     <View>
-      <Text> Home Page </Text>
+      <Text bold>Home Page </Text>
 
       <Button
         size="lg"
-        variant="outline"
+        // variant="outline"
         colorScheme="secondary"
         onPress={() => navigation.navigate("ShopList")}
       >

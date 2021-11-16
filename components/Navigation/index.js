@@ -4,6 +4,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../Home";
 import ShopList from "../ShopList";
 import ShopDetail from "../ShopDetail";
+import Settings from "../Icons/Settings";
+import Title from "../Icons/Title";
 
 const Navigation = () => {
   //   const Stack = createStackNavigator();
@@ -12,10 +14,38 @@ const Navigation = () => {
   // navigation , routes are passed from screen
   // لانهم يعطون الباور باستخدام فنكشنز ريآكت نافيقيشن
   return (
-    <Navigator initialRouteName="Home">
-      <Screen name="Home" component={Home} />
-      <Screen name="ShopList" component={ShopList} />
-      <Screen name="ShopDetail" component={ShopDetail} />
+    <Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerStyle: { backgroundColor: "pink" },
+        headerTintColor: "white",
+        headerTitleStyle: { fontStyle: "italic", fontWeight: "bold" },
+      }}
+    >
+      <Screen
+        name="Home"
+        component={Home}
+        options={{
+          headerStyle: { backgroundColor: "pink" },
+          headerTitle: () => <Title />,
+        }}
+      />
+      <Screen
+        name="ShopList"
+        component={ShopList}
+        options={{ title: "Shops", headerRight: () => <Settings /> }}
+        //options={({navigation})=> ({title:"Shops", headerRight: () => <Settings navigation={navigation}/> })}
+      />
+      <Screen
+        name="ShopDetail"
+        component={ShopDetail}
+        // options has access on route
+        options={({ route }) => {
+          return { title: route.params.shop.name };
+        }}
+        //{{ title: "Detail Of The Shop" }},
+        //, headerShown: false, يشيل ستايل الهيدر في هذه الصفحه ويكون مختلف
+      />
     </Navigator>
   );
 };
