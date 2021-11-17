@@ -27,6 +27,19 @@ class CartStore {
   constructor() {
     makeAutoObservable(this);
   }
+  // شوفي فوق شكل الآيتمز فيها برودكت وفيها كوانتيتي
+  // اهيا الفنكشن تضيفهم على الأراي
+  addItemToCart = (product, quantity) => {
+    // اول شي جيكي اذا البرودكت موجود او لا
+    const foundItem = this.items.find(
+      (item) => item.product._id === product._id
+    );
+    if (foundItem) {
+      // اذا موجوده ابديت الموجود وضيفيها
+      foundItem.quantity = quantity;
+      // الموجوده في نيومرك انبت
+    }
+  };
 }
 
 const cartStore = new CartStore();
