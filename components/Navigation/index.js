@@ -7,7 +7,8 @@ import ShopDetail from "../ShopDetail";
 // import Settings from "../Icons/Settings";
 import Title from "../Icons/Title";
 import CartList from "../CartList";
-import Cart from "../";
+import Cart from "../Icons/Cart";
+
 const Navigation = () => {
   //   const Stack = createStackNavigator();
   const { Navigator, Screen } = createStackNavigator();
@@ -36,8 +37,7 @@ const Navigation = () => {
         component={ShopList}
         options={({ navigation }) => ({
           title: "Shops",
-          // headerRight: () => <Cart navigation={navigation}
-          // />,
+          headerRight: () => <Cart navigation={navigation} />,
         })}
         // <Settings /> لو تبين تكون داخلها seettings
         //options={({navigation})=> ({title:"Shops", headerRight: () => <Settings navigation={navigation}/> })}
@@ -46,8 +46,11 @@ const Navigation = () => {
         name="ShopDetail"
         component={ShopDetail}
         // options has access on route
-        options={({ route }) => {
-          return { title: route.params.shop.name };
+        options={({ route, navigation }) => {
+          return {
+            title: route.params.shop.name,
+            headerRight: () => <Cart navigation={navigation} />,
+          };
         }}
         //{{ title: "Detail Of The Shop" }},
         //, headerShown: false, يشيل ستايل الهيدر في هذه الصفحه ويكون مختلف

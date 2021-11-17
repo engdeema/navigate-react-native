@@ -8,10 +8,10 @@ const CartItem = ({ item }) => {
       <Text>{item.product.name}</Text>
       <Text>{item.product.price}</Text>
       <Text>{item.quantity}</Text>
-      <Image
+      {/* <Image
         source={{ uri: baseURL + item.product.name }}
         style={{ width: 50, height: 50 }}
-      />
+      /> */}
     </View>
   );
 };
