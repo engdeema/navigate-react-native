@@ -7,7 +7,13 @@ const CartList = () => {
   const newItems = cartStore.items.map((item) => (
     <CartItem key={item.product._id} item={item} />
   ));
-  return <View>{newItems}</View>;
+  return (
+    <View>
+      {newItems}
+
+      <Text>Cart Total : {cartStore.totalQuantity}</Text>
+    </View>
+  );
 };
 
 export default CartList;

@@ -38,8 +38,26 @@ class CartStore {
       // اذا موجوده ابديت الموجود وضيفيها
       foundItem.quantity = quantity;
       // الموجوده في نيومرك انبت
+    } else {
+      const newItem = {
+        // شي يشبه الدمي داتا يكون فيها برودكت وكوانتيتي
+        product: product,
+        // هذا البرودكت من الباكند
+        quantity: quantity,
+        // هذي من نيومرك فاليو من الستيت
+      };
+      this.items.push(newItem);
     }
   };
+  // function that computes something and return a value
+  // خاصيه كلاس
+  get totalQuantity() {
+    let total = 0;
+    // استخدمنا فور ايج لاني مابي اغير القيمه بس ابي اشوف الناتج الكلي مال الجمع ف ماستخدم ماب
+    this.items.forEach((item) => (total = total += item.quantity));
+    // return 0;
+    return total;
+  }
 }
 
 const cartStore = new CartStore();

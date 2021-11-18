@@ -36,11 +36,12 @@ const CartItem = ({ item }) => {
   return (
     <View>
       <NumericInput
-        totalWidth={150}
-        totalHeight={100}
+        totalWidth={40}
+        totalHeight={30}
         textColor="#cf5474"
         rounded
         minValue={1}
+        maxValue={item.product.quantity}
         value={quantity}
         onChange={(value) => handleAdd(value)}
 
