@@ -11,6 +11,7 @@ const Home = ({ navigation }) => {
   };
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
+
   return (
     <View style={styles.container}>
       <ImageBackground source={image} resizeMode="contain" style={styles.image}>

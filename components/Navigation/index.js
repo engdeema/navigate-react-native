@@ -8,6 +8,8 @@ import ShopDetail from "../ShopDetail";
 import Title from "../Icons/Title";
 import CartList from "../CartList";
 import Cart from "../Icons/Cart";
+import Signin from "../Auth/Signin";
+import Signup from "../Auth/Signup";
 
 const Navigation = () => {
   //   const Stack = createStackNavigator();
@@ -57,6 +59,8 @@ const Navigation = () => {
       />
 
       <Screen name="CartList" component={CartList} />
+      <Screen name="Signin" component={Signin} />
+      <Screen name="Signup" component={Signup} />
     </Navigator>
   );
 };

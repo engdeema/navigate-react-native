@@ -58,6 +58,14 @@ class CartStore {
     // return 0;
     return total;
   }
+
+  removeItem = (productId) => {
+    this.items = this.items.filter((item) => item.product._id !== productId);
+  };
+  checkout = () => {
+    this.items - [];
+    alert("Thank you for shopping");
+  };
 }
 
 const cartStore = new CartStore();

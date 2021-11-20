@@ -1,11 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
-import { Button } from "native-base";
+import { StyleSheet, Text, View, Image, Button } from "react-native";
 import baseURL from "../../Store/instance";
 import NumericInput from "react-native-numeric-input";
 import { useState } from "react";
 import cartStore from "../../Store/cartStore";
 import { observer } from "mobx-react";
+import DeleteItem from "../Icons/DeleteItem";
 
 const CartItem = ({ item }) => {
   // item.quantity اول مايضيف اليوزر
@@ -47,6 +47,7 @@ const CartItem = ({ item }) => {
 
         // onChange={(value) => setQuantity(value)}
       />
+
       {/* <Button>Add</Button> */}
       <Text>{item.product.name}</Text>
       <Text>{item.product.price} KD</Text>
@@ -62,6 +63,8 @@ const CartItem = ({ item }) => {
       <Text>
         {item.product.price} x {item.quantity}KD
       </Text>
+
+      <DeleteItem productId={item.product._id} />
     </View>
   );
 };
