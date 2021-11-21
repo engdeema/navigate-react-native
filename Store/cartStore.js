@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { instance } from "./instance";
 
 class CartStore {
   items = [
@@ -67,13 +68,32 @@ class CartStore {
     // for an item in the whole application
     await AsyncStorage.setItem("myCart", JSON.stringify(this.items));
   };
+
   checkout = async () => {
     // this.items - [];
-    this.items = [];
+    // this.items = [];
     // for all items
-    await AsyncStorage.removeItem("myCart");
-    alert("Thank you for shopping");
+    // await AsyncStorage.removeItem("myCart");
+    // alert("Thank you for shopping");
+    // };
+
+    // بحولها من شكل لي ثاني
+    // من اللي معطيني اياه الى آي دي وكوانتيتي
+
+    try {
+      const cart = this.items.map((item) => ({
+        // or ...item,product:item.product._id,
+        product: item.product._id,
+        quantity: item.quantity,
+      }));
+      // backend sees cart as an array of obj thats why we put it in {}
+      const res = await instance.post("/checkout", { items: cart });
+      this.items = [];
+      await AsyncStorage.removeItem("myCart");
+      alert("Thank you for shopping");
+    } catch (error) {}
   };
+
   // parse
   fetchCart = async () => {
     try {
