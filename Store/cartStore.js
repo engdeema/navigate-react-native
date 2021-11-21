@@ -1,4 +1,5 @@
 import { makeAutoObservable } from "mobx";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class CartStore {
   items = [
@@ -29,7 +30,7 @@ class CartStore {
   }
   // شوفي فوق شكل الآيتمز فيها برودكت وفيها كوانتيتي
   // اهيا الفنكشن تضيفهم على الأراي
-  addItemToCart = (product, quantity) => {
+  addItemToCart = async (product, quantity) => {
     // اول شي جيكي اذا البرودكت موجود او لا
     const foundItem = this.items.find(
       (item) => item.product._id === product._id
@@ -48,6 +49,9 @@ class CartStore {
       };
       this.items.push(newItem);
     }
+    // اي آيتم راح تتسيف داخل أسنك ستورج راح تضل لها نسخه
+    // والطريقه اني احولها حق سترنق
+    await AsyncStorage.setItem("myCart", JSON.stringify(this.items));
   };
   // function that computes something and return a value
   // خاصيه كلاس
@@ -58,15 +62,32 @@ class CartStore {
     // return 0;
     return total;
   }
-
-  removeItem = (productId) => {
+  removeItem = async (productId) => {
     this.items = this.items.filter((item) => item.product._id !== productId);
+    // for an item in the whole application
+    await AsyncStorage.setItem("myCart", JSON.stringify(this.items));
   };
-  checkout = () => {
-    this.items - [];
+  checkout = async () => {
+    // this.items - [];
+    this.items = [];
+    // for all items
+    await AsyncStorage.removeItem("myCart");
     alert("Thank you for shopping");
+  };
+  // parse
+  fetchCart = async () => {
+    try {
+      const cart = await AsyncStorage.getItem("myCart");
+      if (cart) {
+        this.items = JSON.parse(cart);
+      } else {
+        this.items = [];
+        // this.items = cart ? JSON.parse(cart) :[]
+      }
+    } catch (error) {}
   };
 }
 
 const cartStore = new CartStore();
+cartStore.fetchCart();
 export default cartStore;
